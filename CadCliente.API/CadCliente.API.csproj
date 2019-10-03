@@ -123,6 +123,10 @@
       <Project>{7B721574-CDA1-483E-91C4-E6730B4DE63B}</Project>
       <Name>CadCliente.Application</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CadCliente.Domain\CadCliente.Domain.csproj">
+      <Project>{645e96a4-bd65-4e5b-8498-57e584516ab2}</Project>
+      <Name>CadCliente.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

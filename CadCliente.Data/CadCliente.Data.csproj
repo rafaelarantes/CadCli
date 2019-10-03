@@ -53,17 +53,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cliente\ClienteContext.cs" />
-    <Compile Include="Cliente\Mapping\ClienteMapping.cs" />
+    <Compile Include="Cliente\Context\ClienteContext.cs" />
+    <Compile Include="Cliente\Repository\ClienteRepository.cs" />
+    <Compile Include="Cliente\Repository\Interfaces\IClienteRepository.cs" />
+    <Compile Include="Core\Repository\Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\CadCliente.Domain\CadCliente.Domain.csproj">
       <Project>{645e96a4-bd65-4e5b-8498-57e584516ab2}</Project>
