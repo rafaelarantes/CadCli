@@ -22,11 +22,12 @@ namespace CadCliente.API.Controllers
             return await _clienteAppService.Get(id);
         }
 
-        public async Task<IEnumerable<Domain.Cliente.Entites.Cliente>> GetAll(Guid id)
+        [Route("api/cliente/all")]
+        [HttpGet]
+        public async Task<IEnumerable<Domain.Cliente.Entites.Cliente>> GetAll()
         {
             return await _clienteAppService.GetAll();
         }
-
 
         public async Task Post(Domain.Cliente.Entites.Cliente cliente)
         {

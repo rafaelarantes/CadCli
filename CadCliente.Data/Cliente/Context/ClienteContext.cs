@@ -1,10 +1,13 @@
-﻿using System.Data.Entity;
+﻿using CadCliente.Data.Cliente.Context.Interfaces;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace CadCliente.Data.Cliente.Context
 {
     public class ClienteContext : DbContext
     {
+        public ClienteContext() : base("DefaultConnection") {}
+
         public DbSet<Domain.Cliente.Entites.Cliente> Clientes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

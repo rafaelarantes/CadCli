@@ -1,4 +1,5 @@
 ﻿using CadCliente.Data.Cliente.Context;
+using CadCliente.Data.Cliente.Context.Interfaces;
 using CadCliente.Data.Cliente.Repository.Interfaces;
 using CadCliente.Domain.Cliente.Entites;
 using System;

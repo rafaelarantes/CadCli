@@ -23,11 +23,11 @@ namespace CadCliente.Application.Cliente.Services
 
         public async Task<Domain.Cliente.Entites.Cliente> Get(Guid id)
         {
-            return await _clienteRepository.Get(id);
+            return await _clienteRepository.GetAsync(id);
         }
         public async Task<IEnumerable<Domain.Cliente.Entites.Cliente>> GetAll()
         {
-            return await _clienteRepository.GetAll();
+            return await _clienteRepository.GetAllAsync();
         }
     }
 }
