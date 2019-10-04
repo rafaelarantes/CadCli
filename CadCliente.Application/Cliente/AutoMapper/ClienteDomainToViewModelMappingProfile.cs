@@ -7,7 +7,8 @@ namespace CadCliente.Application.Cliente.AutoMapper
     {
         public ClienteDomainToViewModelMappingProfile()
         {
-            CreateMap<Domain.Cliente.Entites.Cliente, ClienteVModel>();
+            CreateMap<Domain.Cliente.Entites.Cliente, ClienteVModel>()
+                .ForMember(v => v.Idade, c => c.MapFrom(x => x.ObterIdade()));
         }
     }
 }

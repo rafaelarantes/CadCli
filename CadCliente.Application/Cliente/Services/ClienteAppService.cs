@@ -1,4 +1,6 @@
-﻿using CadCliente.Application.Cliente.Services.Interfaces;
+﻿using AutoMapper;
+using CadCliente.Application.Cliente.Services.Interfaces;
+using CadCliente.Application.Cliente.ViewModel;
 using CadCliente.Data.Cliente.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -11,23 +13,27 @@ namespace CadCliente.Application.Cliente.Services
     public class ClienteAppService : IClienteAppService
     {
         private readonly IClienteRepository _clienteRepository;
-        public ClienteAppService(IClienteRepository clienteRepository)
+        private readonly IMapper _mapper;
+        public ClienteAppService(IClienteRepository clienteRepository, IMapper mapper)
         {
             _clienteRepository = clienteRepository;
+            _mapper = mapper;
         }
 
-        public async Task Save(Domain.Cliente.Entites.Cliente cliente)
+        public async Task Save(ClienteVModel clienteVModel)
         {
+            var cliente = _mapper.Map<Domain.Cliente.Entites.Cliente>(clienteVModel);
             await _clienteRepository.SaveAsync(cliente);
         }
 
-        public async Task<Domain.Cliente.Entites.Cliente> Get(Guid id)
+        public async Task<ClienteVModel> Get(Guid id)
         {
-            return await _clienteRepository.GetAsync(id);
+            return _mapper.Map<ClienteVModel>(await _clienteRepository.GetAsync(id));
         }
-        public async Task<IEnumerable<Domain.Cliente.Entites.Cliente>> GetAll()
+        public async Task<IEnumerable<ClienteVModel>> GetAll()
         {
-            return await _clienteRepository.GetAllAsync();
+
+            return _mapper.Map<IEnumerable<ClienteVModel>>(await _clienteRepository.GetAllAsync());
         }
     }
 }

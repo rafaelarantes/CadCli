@@ -10,11 +10,14 @@ namespace CadCliente.Domain.Cliente.Entites
         public DateTime DataNascimento { get; private set; }
 
 
+        public Cliente() {}
+
         public Cliente(string nome, string sobrenome, DateTime dataNascimento)
         {
             Nome = nome;
             Sobrenome = sobrenome;
             DataNascimento = dataNascimento;
+            Id = Guid.NewGuid();
         }
 
         public int ObterIdade()

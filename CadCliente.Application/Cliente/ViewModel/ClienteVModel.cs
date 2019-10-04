@@ -7,5 +7,6 @@ namespace CadCliente.Application.Cliente.ViewModel
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
         public DateTime DataNascimento { get; set; }
+        public int Idade { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using CadCliente.Data.Cliente.Context.Interfaces;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 

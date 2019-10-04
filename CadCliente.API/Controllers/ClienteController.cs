@@ -1,4 +1,6 @@
-﻿using CadCliente.Application.Cliente.Services.Interfaces;
+﻿using CadCliente.API.ViewModel;
+using CadCliente.Application.Cliente.Services.Interfaces;
+using CadCliente.Application.Cliente.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Results;
 
 namespace CadCliente.API.Controllers
 {
@@ -17,21 +20,63 @@ namespace CadCliente.API.Controllers
             _clienteAppService = clienteAppService;
         }
 
-        public async Task<Domain.Cliente.Entites.Cliente> Get(Guid id)
+
+        [Route("api/cliente/id/{id:guid}")]
+        [HttpGet]
+        public async Task<JsonResult<ResultViewModel>> Get(Guid id)
         {
-            return await _clienteAppService.Get(id);
+            var resultViewModel = new ResultViewModel();
+
+            try
+            {
+                resultViewModel.Data = await _clienteAppService.Get(id);
+                resultViewModel.Success = true;
+            }
+            catch(Exception ex)
+            {
+                resultViewModel.Message = "Erro interno";
+                resultViewModel.Success = false;
+            }
+
+            return Json(resultViewModel);
         }
 
         [Route("api/cliente/all")]
         [HttpGet]
-        public async Task<IEnumerable<Domain.Cliente.Entites.Cliente>> GetAll()
+        public async Task<JsonResult<ResultViewModel>> GetAll()
         {
-            return await _clienteAppService.GetAll();
+            var resultViewModel = new ResultViewModel();
+
+            try
+            {
+                resultViewModel.Data = await _clienteAppService.GetAll();
+                resultViewModel.Success = true;
+            }
+            catch(Exception ex)
+            {
+                resultViewModel.Message = "Erro interno";
+                resultViewModel.Success = false;
+            }
+            
+            return Json(resultViewModel);
         }
 
-        public async Task Post(Domain.Cliente.Entites.Cliente cliente)
+        public async Task<JsonResult<ResultViewModel>> Post(ClienteVModel clienteVModel)
         {
-            await _clienteAppService.Save(cliente);
+            var resultViewModel = new ResultViewModel();
+
+            try
+            {
+                await _clienteAppService.Save(clienteVModel);
+                resultViewModel.Success = true;
+            }
+            catch (Exception ex)
+            {
+                resultViewModel.Message = "Erro interno";
+                resultViewModel.Success = false;
+            }
+
+            return Json(resultViewModel);
         }
     }
 }
